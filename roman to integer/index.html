@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+    const roman = "MCMXCIV";
+
+    const romanToInt = (roman) => {
+      const matchingTable = {
+        "I": 1,
+        "V": 5,
+        "X": 10,
+        "L": 50,
+        "C": 100,
+        "D": 500,
+        "M": 1000
+      }
+
+      const isRomanSubstrahend = (roman) => {
+        return roman === "I" || roman === "X" || roman === "C";
+      }
+
+      result = roman.split("");
+
+      result.forEach((char, index, array) => {
+        const currentItem = char;
+        const currentItemIndex = index;
+        const nextItem = array[index + 1];
+
+        if (isRomanSubstrahend(currentItem) && (matchingTable[nextItem] - matchingTable[currentItem]) > 0) {
+          result.splice(currentItemIndex, 2, matchingTable[nextItem] - matchingTable[currentItem])
+        }
+      })
+
+      result = result.map((item, index) => {
+        if (typeof item === "string") {
+          return matchingTable[item];
+        }
+        else {
+          return item;
+        }
+      });
+
+      return result.reduce((sum, item) => {
+        return sum + item;
+      }, 0)
+    };
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

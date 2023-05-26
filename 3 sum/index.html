@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+
+    const nums = [-1, 0, 1, 2, -1, -4];
+
+    // sorted [-4, -1, -1, 0, 1, 2]
+
+    // Нужно разбить массив на 2 подмассива: положительные и отрицательные числа
+
+    // separated negative = [-4, -1, -1]    positive = [0, 1, 2]
+
+    // Получить массив переборок из положительных чисел по 2, сравнить их с отрицательными
+
+    // droppedPositive = [ [0, 1], [0, 2], [1, 2] ] 
+
+    // Получить массив переборок из отрицательных чисел по 2, сравнить из с положительными
+
+    // droppedNegative = [ [-4, -1], [-4, -1], [-1, -1] ] 
+
+    // Может быть 3 условия 
+    // 1) 2 отрицательных числа плюс положительное
+    // 2) 2 положительных плюс отрицательное
+
+
+
+    const threeSum = (nums) => {
+      const positiveNums = [];
+      const negativeNums = [];
+      const finalArray = [];
+
+      const dropArray = (array) => {
+        let droppedNumsArray = [];
+
+        for (let i = 0; i < array.length - 1; i++) {
+          for (let j = i + 1; j < array.length; j++) {
+            droppedNumsArray.push([array[i], array[j]]);
+          }
+        }
+
+        return droppedNumsArray;
+      };
+
+
+      for (let i = 0; i < nums.length; i++) {
+        if (nums[i] >= 0) {
+          positiveNums.push(nums[i]);
+        }
+        else {
+          negativeNums.push(nums[i])
+        }
+      }
+
+      const droppedPositiveNums = dropArray(positiveNums);
+      const droppedNegativeNums = dropArray(negativeNums);
+
+      const getSumFromArray = (array) => {
+        return array.reduce((acc, item, index) => {
+          return acc + item;
+        }, 0);
+      }
+
+
+      for (let i = 0; i < droppedPositiveNums.length; i++) {
+        for (let j = 0; j < negativeNums.length; j++) {
+          if (getSumFromArray([...droppedPositiveNums[i], negativeNums[j]]) === 0) {
+            finalArray.push([...droppedPositiveNums[i], negativeNums[j]]);
+          }
+        }
+      }
+
+      for (let i = 0; i < droppedNegativeNums.length; i++) {
+        for (let j = 0; j < positiveNums.length; j++) {
+          if (getSumFromArray([...droppedNegativeNums[i], positiveNums[j]]) === 0) {
+            finalArray.push([...droppedNegativeNums[i], positiveNums[j]]);
+          }
+        }
+      }
+
+      return finalArray;
+    };
+
+
+    threeSum(nums);
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

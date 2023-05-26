@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    const arr = [5, 2, 0, 3, 1];
+
+    
+    const findArray = (pref) => {
+      const applyXorToAll = (arr) => {
+        if (arr.length === 1) {
+          return arr[0];
+        }
+        else {
+          return arr[0] ^ applyXorToAll(arr.slice(1))
+        }
+      };
+
+      const resultingArray = [];
+
+      for (let i = 0; i < pref.length; i++) {
+        resultingArray.push(applyXorToAll(pref.slice(0, i + 1)))
+      }
+
+      return resultingArray;
+    };
+
+
+
+    console.log(findArray(arr));
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

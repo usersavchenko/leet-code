@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+
+    const totalMoney = (n) => {
+      const getWeeklyInvestment = (mondayInvestment, daysCount) => {
+        let sum = 0;
+
+        for (let i = 1; i < daysCount; i++) {
+          sum += mondayInvestment + i;
+        }
+
+        return sum + mondayInvestment;
+      }
+
+      const weeksCount = Math.floor(n / 7);
+      const restDays = n % 7;
+      let sum = 0;
+
+      if (n < 7) {
+        return getWeeklyInvestment(1, n);
+      }
+
+      if (restDays > 0) {
+        sum += getWeeklyInvestment(weeksCount + 1, restDays);
+      }
+
+      for (let i = 1; i < weeksCount + 1; i++) {
+        sum += getWeeklyInvestment(i, 7);
+      }
+
+      return sum;
+    };
+
+    console.log(totalMoney(10));
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

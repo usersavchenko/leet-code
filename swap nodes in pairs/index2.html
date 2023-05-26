@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+
+    const result = {
+      val: 2,
+      next: {
+        val: 1,
+        next: {
+          val: 4,
+          next: {
+            val: 3,
+            next: {
+              val: 6,
+              next: {
+                val: 5,
+                next: null
+              }
+            }
+          }
+        }
+      }
+    };
+
+    const obj = {
+      val: 1,
+      next: {
+        val: 2,
+        next: {
+          val: 3,
+          next: {
+            val: 4,
+            next: {
+              val: 5,
+              next: {
+                val: 6,
+                next: null
+              }
+            }
+          }
+        }
+      }
+    };
+
+
+    const getLastItemIndex = (obj) => {
+      let index = 0;
+      let current = obj;
+
+      while (current !== null) {
+        current = current.next;
+        index += 1;
+      }
+
+      return index;
+    }
+
+    const callNTimes = (amount, obj) => {
+      let current = obj;
+
+      if (amount === 0) {
+        return obj;
+      }
+
+      for (let i = 0; i < amount; i++) {
+        current = current.next;
+      }
+
+      return current;
+    }
+
+    const createNewObject = (itemsCount, object) => {
+      // Может быть 2 ситуации: a) количество чётное б) количество нечётное
+      const isCountEven = itemsCount % 2 === 0 ? true : false;
+      const isCountOdd = itemsCount % 2 === 0 ? false : true;
+
+      let newObject;
+
+      for (let i = 0; i < itemsCount - 1; i += 2) {
+
+        if (!newObject) {
+          newObject = {
+            ...callNTimes(i + 1, object),
+            next: {
+              ...callNTimes(i, object),
+              next: {}
+            }
+          }
+        }
+
+        else {
+          let lastItem = callNTimes(i, newObject);
+
+          if (i === itemsCount) {
+            lastItem = {
+              ...callNTimes(i + 1, object),
+              next: {
+                ...callNTimes(i, object),
+                next: null
+              }
+            }
+          }
+          else {
+            lastItem = {
+              ...callNTimes(i + 1, object),
+              next: {
+                ...callNTimes(i, object),
+                next: {}
+              }
+            }
+          }
+
+        }
+
+
+
+        // newObject = {
+        //   ...callNTimes(1, object),
+        //   next: {
+        //     ...callNTimes(0, object),
+        //     next: {
+        //       ...callNTimes(3, object),
+        //       next: {
+        //         ...callNTimes(2, object),
+        //         next: {
+        //           ...callNTimes(5, object),
+        //           next: {
+        //             ...callNTimes(4, object),
+        //             next: null
+        //           }
+        //         }
+        //       }
+        //     }
+        //   }
+        // }
+
+
+
+      }
+
+      return newObject;
+
+
+    };
+
+
+    console.log(createNewObject(getLastItemIndex(obj), obj));
+
+
+    const newObj = {
+      ...obj.next,
+      next: {
+        ...obj,
+        next: {
+          ...obj.next.next.next,
+          next: {
+            ...obj.next.next,
+            next: {
+              ...obj.next.next.next.next.next,
+              next: {
+                ...obj.next.next.next.next,
+                next: null
+              }
+            }
+          }
+        }
+      }
+    };
+
+
+
+
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

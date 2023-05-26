@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+
+    const nums1 = [1, 2, 3];
+    const nums2 = [2, 3, 6];
+
+    const findMedianSortedArrays = (nums1, nums2) => {
+      const composedArray = [...nums1, ...nums2].sort((a, b) => a - b);
+
+      if (composedArray.length % 2 > 0) {
+        return composedArray[Math.floor(composedArray.length / 2)]
+      }
+      else {
+        return (composedArray[composedArray.length / 2 - 1] + composedArray[composedArray.length / 2]) / 2;
+      }
+    };
+
+    console.log(findMedianSortedArrays(nums1, nums2));
+
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

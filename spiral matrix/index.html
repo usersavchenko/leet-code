@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+    // const matrix = [[1, 2, 3, 4, 5, 6], [20, 21, 22, 23, 24, 7], [19, 32, 33, 34, 25, 8], [18, 31, 36, 35, 26, 9], [17, 30, 29, 28, 27, 10], [16, 15, 14, 13, 12, 11]];
+    // const matrix = [
+    //   [1, 2, 3, 4, 5, 6, 7],
+    //   [24, 25, 26, 27, 28, 29, 8],
+    //   [23, 40, 41, 42, 43, 30, 9],
+    //   [22, 39, 48, 49, 44, 31, 10],
+    //   [21, 38, 47, 46, 45, 32, 11],
+    //   [20, 37, 36, 35, 34, 33, 12],
+    //   [19, 18, 17, 16, 15, 14, 13]
+    // ];
+    // const matrix = [[7, 9, 6]];
+
+    // const matrix = [
+    //   [1, 11],
+    //   [2, 12],
+    //   [3, 13],
+    //   [4, 14],
+    //   [5, 15],
+    //   [6, 16],
+    //   [7, 17],
+    //   [8, 18],
+    //   [9, 19],
+    //   [10, 20]
+    // ];
+
+    const matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+
+    const spiralOrder = (matrix) => {
+      let finalArray = [];
+
+      if (matrix[0].length === 1 || matrix.length === 1) {
+        return matrix.flat();
+      }
+
+      while (matrix[0]?.length > 0) {
+        finalArray.push(...matrix[0]);
+        matrix.splice(0, 1);
+
+        for (let j = 0; j < matrix.length; j++) {
+          finalArray.push(matrix[j].at(-1));
+          matrix[j].splice(-1, 1);
+
+          if (matrix[j].length === 0) {
+            matrix.splice(j, 1);
+          }
+        }
+
+        if (matrix.length > 0) {
+          finalArray.push(...matrix.at(-1).reverse());
+          matrix.splice(-1, 1);
+        }
+
+        for (let k = 1; k < matrix.length + 1; k++) {
+          finalArray.push(matrix.at(-k)[0]);
+          matrix.at(-k).splice(0, 1);
+        }
+      }
+
+      return finalArray;
+    };
+
+    console.log(spiralOrder(matrix));
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

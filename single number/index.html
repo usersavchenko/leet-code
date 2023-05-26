@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+
+    const nums = [1, 1];
+
+    const singleNumber = (nums) => {
+      const tempArray = [];
+
+      for (let i = 0; i < nums.length; i++) {
+        if (tempArray.includes(nums[i])) {
+          const itemIndex = tempArray.indexOf(nums[i]);
+          tempArray.splice(itemIndex, 1);
+        }
+        else {
+          tempArray.push(nums[i])
+        }
+      }
+
+      return tempArray[0];
+    };
+
+    console.log(singleNumber(nums));
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

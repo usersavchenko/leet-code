@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+
+    const head = [1, 2, 3]
+
+    const swapPairs = (head) => {
+      const droppedArray = [];
+      const finalArray = [];
+
+      if (head.length === 0) {
+        return [];
+      }
+
+      if (head.length === 1) {
+        return head;
+      }
+
+      for (let i = 0; i < head.length; i += 2) {
+        droppedArray.push([head[i], head[i + 1]])
+      }
+
+      for (let i = 0; i < droppedArray.length; i++) {
+        droppedArray[i] = droppedArray[i].reverse();
+      }
+
+      for (let i = 0; i < droppedArray.length; i++) {
+        finalArray.push(...droppedArray[i]);
+      }
+
+      return finalArray;
+    };
+
+
+    const swapPairs2 = (head) => {
+      for (let i = 0; i < head.length; i += 2) {
+        if (head[i + 1]) {
+          const firstItem = head[i];
+          const secondItem = head[i + 1];
+          head[i] = secondItem;
+          head[i + 1] = firstItem;
+        }
+      }
+
+      return head;
+    };
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

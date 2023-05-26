@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+
+    const l1 = [1, 2, 3];
+    const l2 = [1, 2];
+
+    const addTwoNumbers = (l1, l2) => {
+      return (+(l1.join("")) + +(l2.join(""))).toString().split("");
+    };
+
+    console.log(addTwoNumbers(l1, l2));
+
+
+    // const addTwoNumbers = (l1, l2) => {
+    //   const composedArray = [];
+    //   const finalArray = [];
+
+    //   // l1 = l1.reverse();
+    //   // l2 = l2.reverse();
+
+    //   const theLongestArray = l1.length > l2.length ? l1 : l2;
+    //   const theShortestArray = l1.length > l2.length ? l2 : l1;
+
+    //   for (let i = 1; i < theShortestArray.length + 1; i++) {
+    //     composedArray.unshift(l1.at(-i) + l2.at(-i));
+    //   }
+
+    //   if (l1.length !== l2.length) {
+    //     composedArray.unshift(...theLongestArray.slice(0, theLongestArray.length - theShortestArray.length));
+    //   }
+
+
+
+    //   return finalArray;
+    // };
+
+    // console.log(addTwoNumbers(l1, l2));
+
+    // const test = (arr) => {
+    //   let finalArray = [];
+
+    //   arr.reduceRight((accumulator, item, index) => {
+    //     const tensNumber = Math.floor((item + accumulator) / 10);
+
+    //     if (tensNumber > 0) {
+    //       finalArray.unshift(item + accumulator - tensNumber * 10);
+    //       return tensNumber;
+    //     }
+    //     else {
+    //       finalArray.unshift(item + accumulator);
+    //       return 0;
+    //     }
+    //   }, 0)
+
+    //   return finalArray;
+    // };
+
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

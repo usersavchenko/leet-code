@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+    // Нужно собрать все цепочки и по итогу вывести с наименьшим весом
+    // Проходимся по массиву с числами поочерёдно и 
+
+    const nums = [2, 3, 1, 1, 4];
+    //            0  1  2  3  4
+
+    const jump = (nums) => {
+      const targetIndex = nums.length - 1;
+      let minimalCountOfSteps = null;
+
+      for (let i = 0; i < nums.length; i++) {
+
+        let shouldEnd = false;
+        let stepIndex = i + nums[i];
+        let stepsCount = i;
+
+        while (!shouldEnd) {
+          if (stepIndex === targetIndex) {
+            shouldEnd = true;
+
+            if (minimalCountOfSteps === null) {
+              minimalCountOfSteps = stepsCount;
+            }
+
+            if (minimalCountOfSteps > stepsCount) {
+              minimalCountOfSteps = stepsCount;
+            }
+          }
+
+
+          if (stepIndex !== targetIndex && stepIndex < targetIndex) {
+            stepsCount += 1;
+            stepIndex += nums[stepIndex];
+          }
+
+        }
+
+      }
+    };
+
+    console.log(jump(nums));
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

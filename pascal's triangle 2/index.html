@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    const getRow = (rowIndex) => {
+      const triangleArray = [[1]];
+
+      for (let i = 0; i < rowIndex; i++) {
+        if (triangleArray.length === 1) {
+          triangleArray.push([1, 1]);
+        }
+        else {
+          const lastRow = triangleArray.at(-1);
+          const newItems = [];
+          for (let i = 0; i < lastRow.length - 1; i++) {
+            newItems.push(lastRow[i] + lastRow[i + 1])
+          }
+
+          triangleArray.push([1, ...newItems, 1]);
+        }
+      }
+
+      return triangleArray[rowIndex];
+    };
+
+    console.log(getRow(0));
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

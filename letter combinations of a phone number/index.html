@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+    // const digits = "23";
+
+    // const letterCombinations = (digits) => {
+    //   const matchingObject = {
+    //     2: ["a", "b", "c"],
+    //     3: ["d", "e", "f"],
+    //     4: ["g", "h", "i"],
+    //     5: ["j", "k", "l"],
+    //     6: ["m", "n", "o"],
+    //     7: ["p", "q", "r", "s"],
+    //     8: ["t", "u", "v"],
+    //     9: ["w", "x", "y", "z"]
+    //   }
+    // };
+
+
+
+    // console.log(letterCombinations(digits));
+
+
+    // Нужно написать функцию на JavaScript, которая будет принимать
+    // массив произвольной длины из массивов произвольной длины
+    // по типу [[1,2,3], [4,5,6], [7,8,9]] 
+    // и возвращать все переборки, например для [[1], [4,6], [7,8,9]]
+    // ответ будет [[1,4,7], [1,4,8], [1,4,9], [1,6,7], [1,6,8], [1,6,9] ]
+
+
+    function allCombinations(arr) {
+      if (arr.length === 0) {
+        return [[]];
+      } else {
+        let result = [];
+        let rest = allCombinations(arr.slice(1));
+        for (let i = 0; i < rest.length; i++) {
+          for (let j = 0; j < arr[0].length; j++) {
+            result.push([arr[0][j], ...rest[i]]);
+          }
+        }
+        return result;
+      }
+    }
+
+    // Пример использования
+    let arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+    let result = allCombinations(arr);
+    console.log(result);
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

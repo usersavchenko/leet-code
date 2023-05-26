@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+    const lengthOfLongestSubstring = (s) => {
+      const substringsArray = [];
+      let maxSubstringLength = 0;
+
+      const checkForUnique = (s) => {
+        return s === Array.from(new Set(s.split(""))).join("");
+      }
+
+      for (let i = 0; i < s.length; i++) {
+        for (let j = i + 1; j < s.length + 1; j++) {
+          substringsArray.push(s.slice(i, j))
+        }
+      }
+
+      for (let i = 0; i < substringsArray.length; i++) {
+        const currentSubstring = substringsArray[i];
+
+        if (checkForUnique(currentSubstring) && currentSubstring.length > maxSubstringLength) {
+          maxSubstringLength = currentSubstring.length;
+        }
+      }
+
+      return maxSubstringLength;
+    };
+
+    console.log(lengthOfLongestSubstring("pwwkew"));
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
